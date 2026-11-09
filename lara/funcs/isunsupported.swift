@@ -40,16 +40,12 @@ func isunsupported() -> Bool {
         return true
     }
     
+    // iOS 26.x 全系放行（原版仅允许 26.0 ~ 26.0.1）
     if v.majorVersion == 26 {
-        if v.minorVersion > 0 { return true }
-        if v.minorVersion == 0 && v.patchVersion > 1 { return true }
+        return false
     }
     
     if hasmie() {
-        return true
-    }
-    
-    if isdebugged() {
         return true
     }
     
